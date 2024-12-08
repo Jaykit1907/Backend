@@ -8,7 +8,7 @@ app.set("view engine","ejs");
 app.set("views","views");
 app.use(bodyparser.urlencoded())
 app.use(express.static("views"))
-//mongoose.connect("mongodb+srv://jaykit1907:JPtivi181923 @cluster0.h1mdt.mongodb.net/jaykit5?retryWrites=true&w=majority&appName=Cluster0").then(()=>console.log("connected successfully....")).catch((err)=>console.log(err));
+//mongoose.connect("mongodb+srv://jaykit1907:<password>@cluster0.h1mdt.mongodb.net/jaykit5?retryWrites=true&w=majority&appName=Cluster0").then(()=>console.log("connected successfully....")).catch((err)=>console.log(err));
 
 
 
@@ -16,7 +16,7 @@ var transport=nodemailer.createTransport({
     host:"smtp.gmail.com",
     auth:{
         user:"jaykitmaurya1907@gmail.com",
-        pass:"qjdx nenh rnso uuox"
+        pass:process.env.EMAIL_PASS
     }
 });
 
@@ -55,8 +55,8 @@ app.get("/user",(req,res)=>{
         "phone":256944555
     });
 })
-//const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-app.listen(4000,()=>{
-    console.log(`server running on 4000`);
+app.listen(port,()=>{
+    console.log(`server running on ${port}`);
 })
