@@ -5,12 +5,12 @@ const cors=require("cors")
 require("dotenv").config();
 
 const app=express();
-// const coroption={
-//     origin:"http://localhost:3000",
-//     methods:["GET","POST","PUT","DELETE"],
-//     credentials:true,
+const coroption={
+    origin:"http://localhost:3000",
+    methods:["GET","POST","PUT","DELETE"],
+    credentials:true,
 
-// }
+}
 
 
 
@@ -18,7 +18,7 @@ const transport= nodeMailer.createTransport({
     host:"smtp.gmail.com",
     auth:{
         user:"jaykitmaurya1907@gmail.com",
-        pass:process.env.MAIL_PASS
+        pass:process.env.EMAIL_PASS
     }
 })
 
@@ -35,7 +35,7 @@ function mailfun(to,sub,msg){
     
     
 app.use(express.json());
-// app.use(cors(coroption));
+app.use(cors(coroption));
 
 app.get("/",(req,res)=>{
     res.send("welcome home page");
