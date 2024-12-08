@@ -1,6 +1,6 @@
 const express=require("express");
 const nodeMailer=require("nodemailer");
-
+require("dotenv").config();
 const cors=require("cors")
 require("dotenv").config();
 
