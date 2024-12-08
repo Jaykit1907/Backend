@@ -55,7 +55,8 @@ app.get("/user",(req,res)=>{
         "phone":256944555
     });
 })
+const port = process.env.PORT || 3000;
 
-app.listen(process.env.PORT,()=>{
+app.listen(port,()=>{
     console.log(`server running on ${process.env.PORT}`);
 })
