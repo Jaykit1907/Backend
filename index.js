@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const app=express();
 const coroption={
-    origin:"http://localhost:3000",
+    origin:"https://mail-project-pearl.vercel.app",
     methods:["GET","POST","PUT","DELETE"],
     credentials:true,
 
