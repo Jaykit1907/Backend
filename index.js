@@ -16,7 +16,7 @@ var transport=nodemailer.createTransport({
     host:"smtp.gmail.com",
     auth:{
         user:"jaykitmaurya1907@gmail.com",
-        pass:process.env.EMAIL_PASS
+        pass:"qjdx nenh rnso uuox"
     }
 });
 
@@ -55,8 +55,8 @@ app.get("/user",(req,res)=>{
         "phone":256944555
     });
 })
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
 
-app.listen(port,()=>{
-    console.log(`server running on ${process.env.PORT}`);
+app.listen(4000,()=>{
+    console.log(`server running on 4000`);
 })
