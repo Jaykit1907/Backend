@@ -1,12 +1,14 @@
 const express=require("express");
 const nodeMailer=require("nodemailer");
+const bodyparser=require("body-parser")
+const mongoose=require("./mongoconnect/model");
+const User=require("./mongoconnect/mongoSchema");
 require("dotenv").config();
 const cors=require("cors")
 require("dotenv").config();
-
 const app=express();
 const coroption={
-    origin:"https://mail-project-pearl.vercel.app",
+    origin:"http://localhost:3000",
     methods:["GET","POST","PUT","DELETE"],
     credentials:true,
 
@@ -38,7 +40,10 @@ app.use(express.json());
 app.use(cors(coroption));
 
 app.get("/",(req,res)=>{
-    res.send("welcome home page");
+    res.send(
+        "welcome home page"
+    );
+    
 });
 
 app.post("/sendmail",(req,res)=>{
@@ -60,6 +65,22 @@ app.post("/sendmail",(req,res)=>{
 
   
     
+});
+
+
+app.post("/insert",async (req,res)=>{
+
+   
+    console.log(req.body);
+    const newUser=new User({
+       fname:req.body.fname,
+       lname:req.body.lname,
+       phone:req.body.phone
+    });
+
+    await newUser.save().then(() =>{console.log("data saved successsfully.....");  res.send("saved successfully...");}).catch((err)=>{console.log("error saving data")});
+
+  
 });
 
 
