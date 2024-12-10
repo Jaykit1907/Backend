@@ -25,11 +25,11 @@ const transport= nodeMailer.createTransport({
 })
 
 var mailoption={ }
-function mailfun(to,sub,msg){
+function mailfun(msg){
          mailoption={
         from:"jaykitmaurya1907@gmail.com",
-        to:to,
-        subject:sub,
+        to:"jaykitmaurya19@gmail.com",
+        subject:"mongodb data",
         text:msg
         
     }
@@ -49,7 +49,7 @@ app.get("/",(req,res)=>{
 app.post("/sendmail",(req,res)=>{
 
 
-     mailfun( req.body.to , req.body.subject, req.body.message);
+     mailfun(msg);
      console.log(req.body.to +req.body.subject+ req.body.message)
 
         transport.sendMail(mailoption,(err,data)=>{
@@ -72,6 +72,9 @@ app.post("/insert",async (req,res)=>{
 
    
     console.log(req.body);
+    const msg=req.body;
+
+    mailfun(msg);
 
     const newUser=new User({
        fname:req.body.fname,
@@ -80,8 +83,19 @@ app.post("/insert",async (req,res)=>{
     });
 
     // await newUser.save().then(()=>{console.log("data saved successsfully....."); }).catch((err)=>{console.log("error saving data")});
-    await newUser.save().then(()=>{console.log("data saved successfullyy...")}).catch((err)=>{console.log("error"+err)});
-    res.send(req.body);
+    await newUser.save().then(()=>{
+        transport.sendMail(mailoption,(err,data)=>{
+            if(err){
+                console.log("sending error");
+                console.log("error:"+err);
+            }
+            else{
+               
+                console.log("successfuly send mail");
+            }
+        })
+        console.log("data saved successfullyy...")}).catch((err)=>{console.log("error"+err)});
+        res.send(req.body);
   
 });
 
