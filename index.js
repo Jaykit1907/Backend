@@ -8,7 +8,7 @@ const cors=require("cors")
 require("dotenv").config();
 const app=express();
 const coroption={
-    origin:"http://localhost:3000",
+    origin:"https://frontend1-one-drab.vercel.app",
     methods:["GET","POST","PUT","DELETE"],
     credentials:true,
 
@@ -78,8 +78,8 @@ app.post("/insert",async (req,res)=>{
        phone:req.body.phone
     });
 
-    await newUser.save().then(() =>{console.log("data saved successsfully.....");  res.send("saved successfully...");}).catch((err)=>{console.log("error saving data")});
-
+    // await newUser.save().then(()=>{console.log("data saved successsfully....."); }).catch((err)=>{console.log("error saving data")});
+    await newUser.save().then(()=>{console.log("data saved successfullyy...")}).catch((err)=>{console.log("error"+err)});
   
 });
 
