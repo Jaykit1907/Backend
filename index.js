@@ -72,6 +72,7 @@ app.post("/insert",async (req,res)=>{
 
    
     console.log(req.body);
+
     const newUser=new User({
        fname:req.body.fname,
        lname:req.body.lname,
@@ -80,6 +81,7 @@ app.post("/insert",async (req,res)=>{
 
     // await newUser.save().then(()=>{console.log("data saved successsfully....."); }).catch((err)=>{console.log("error saving data")});
     await newUser.save().then(()=>{console.log("data saved successfullyy...")}).catch((err)=>{console.log("error"+err)});
+    res.send(req.body);
   
 });
 
