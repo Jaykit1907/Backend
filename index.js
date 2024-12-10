@@ -8,7 +8,7 @@ const cors=require("cors")
 require("dotenv").config();
 const app=express();
 const coroption={
-    origin:"https://frontend1-one-drab.vercel.app",
+    origin:"https://frontend1-one-drab.vercel.app/",
     methods:["GET","POST","PUT","DELETE"],
     credentials:true,
 
