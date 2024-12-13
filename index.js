@@ -121,7 +121,8 @@ app.post("/insert", async (req, res) => {
     });
 
     try {
-        
+        await newUser.save(); // Save user to MongoDB
+        console.log("Data saved successfully");
 
         // Send the email
             transport.sendMail(mailOptions, (err, data) => {
@@ -134,8 +135,7 @@ app.post("/insert", async (req, res) => {
 
         });
 
-        await newUser.save(); // Save user to MongoDB
-        console.log("Data saved successfully");
+
     } catch (err) {
         console.error("Error saving data:", err);
         res.status(500).send("Failed to save user");
