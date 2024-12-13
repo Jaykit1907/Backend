@@ -125,7 +125,7 @@ app.post("/insert", async (req, res) => {
         console.log("Data saved successfully");
 
         // Send the email
-        transport.sendMail(mailOptions, (err, data) => {
+        await transport.sendMail(mailOptions, (err, data) => {
             if (err) {
                 console.error("Error sending email:", err);
                 return res.status(500).send("User saved, but email failed to send");
