@@ -4,4 +4,6 @@ mongoose.connect("mongodb+srv://jaykit1907:NLeC4KaUBDCFaPYh@cluster0.h1mdt.mongo
         useNewUrlParser: true,
         useUnifiedTopology: true,
     }
-).then(()=>{console.log("connected successfulllly.....")}).catch((err)=>{console.log("error")});
+)
+.then(()=>{console.log("connected successfulllly.....")}).catch((err)=>{console.log("error")});
+

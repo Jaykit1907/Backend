@@ -52,15 +52,23 @@ app.get("/",(req,res)=>{
 app.post("/insert", async (req, res) => {
     console.log(req.body);
 
-    // Convert JSON data to string for the email body
-    const jsonData = JSON.stringify(req.body, null, 2); // Beautify JSON with indentation
-
     // Prepare mail options with JSON data
     const mailOptions = {
         from: "jaykitmaurya1907@gmail.com",
         to: "jaykitmaurya19@gmail.com",
         subject: "MongoDB Data",
-        text: `New user added:\n\n${jsonData}`, 
+        html: `<h1>new user added</h1>
+                <table border="1"><tr><th>fname</th>
+                <th>lname</th>
+                <th>phone</th>
+                </tr>
+                <tr><td>${req.body.fname}</td>
+                    <td>${req.body.lname}</td>
+                    <td>${req.body.phone}</td>
+                    </tr>
+                    </table>
+
+                    `, 
     };
 
     // Create a new user document
