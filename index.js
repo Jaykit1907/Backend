@@ -81,7 +81,9 @@ app.post("/insert", async (req, res) => {
     try {
         await newUser.save(); // Save user to MongoDB
         console.log("Data saved successfully");
-            // res.json({"message":"successsfully send"});
+            res.json({"message":"successsfully send",
+                        "value1":true
+            });
 
         // Send the email
           await transport.sendMail(mailOptions, (err, data) => {
